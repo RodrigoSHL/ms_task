@@ -29,17 +29,12 @@ let TasksService = class TasksService {
         return found;
     }
     async create(createTaskDto) {
-        const { name, description, state } = createTaskDto;
-        const client = this.taskRepository.create({
-            name,
-            description,
-            state
-        });
-        const response = await this.taskRepository.save(client);
-        return response;
+        const task = this.taskRepository.create(createTaskDto);
+        await this.taskRepository.save(task);
+        return task;
     }
-    findOne(id) {
-        return `This action returns a #${id} task`;
+    async findById(id) {
+        return this.taskRepository.findOne(id);
     }
     update(id, updateTaskDto) {
         return `This action updates a #${id} task`;

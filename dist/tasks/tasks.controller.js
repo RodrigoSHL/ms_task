@@ -28,7 +28,7 @@ let TasksController = class TasksController {
         return this.tasksService.create(createTaskDto);
     }
     findOne(id) {
-        return this.tasksService.findOne(+id);
+        return this.tasksService.findById(id);
     }
     update(id, updateTaskDto) {
         return this.tasksService.update(+id, updateTaskDto);
